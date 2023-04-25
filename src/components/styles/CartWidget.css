@@ -5,14 +5,14 @@
 }
 
 .qty-display {
+    margin-left: 10px;
     display: inline-block;
-    width: 18px;
-    height: 18px;
-    background-color: white;
+    width: 16px;
+    height: 16px;
+    background-color: black;
     border-radius: 50%;
-    font-size: 12px;
+    font-size: 10px;
     position: absolute;
     text-align: center;
-    line-height: 17px;
-    margin-left: 10px;
+    line-height: 18px;
 }

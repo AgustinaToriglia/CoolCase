@@ -1,0 +1,11 @@
+.item-detail-container{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("https://hip2save.com/wp-content/uploads/2023/01/qases-6.jpg?resize=1024%2C768&strip=all");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px;
+}

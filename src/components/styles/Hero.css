@@ -34,21 +34,9 @@
     font-weight: 300;
     margin: 30px auto;
     max-width: 360px;
-    text-shadow: 2px 2px black;
+    text-shadow: 2px 2px white;
 }
 
-.button-primary {
-    background-color: #64CE9E;
-    border: none;
-    border-radius: 10px;
-    font-family: var(--mulish-font);
-    font-weight: 700;
-    font-size: 1rem;
-    margin: 20px auto;
-    width: 112px;
-    height: 36px;
-    cursor: pointer;
-}
 
 @media only screen and (min-width: 800px) {
     .hero-container {

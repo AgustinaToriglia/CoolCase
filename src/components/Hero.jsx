@@ -11,12 +11,11 @@ const Hero = ({title}) => {
                         <strong>CoolCase</strong>  es la tienda online más cool de accesorios para tu celu
                     </p>
                     <p>Aquí encontrarás todo lo que necesitas para que tu celular se vea más facherito</p>
-                    <button className="button-primary">Comprar</button>
                 </article>
             </div>
         </section>
     )
 }
 
-export default Hero
 
+export default Hero
