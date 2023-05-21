@@ -1,32 +1,39 @@
-import { useState, useEffect } from "react";
-import { arregloProductos } from "../components/Data/dataBase.js";
+import { useEffect, useContext } from "react";
 import { ItemDetail } from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import {CartContext} from '../context/CartContext'
+import useFirebase from "../hook/useFirebase";
+import Loading from './Loading'
+import Error from './Error'
 import './styles/ItemDetailContainer.css'
 
-export const ItemDetailContainer = ()=>{
-    const {productId} = useParams();
+export const ItemDetailContainer = () => {
 
-    const [item, setItem] = useState({});
+    const {id} = useParams();
+    const {getProduct,product, isLoading, products, getProducts} = useFirebase();
+    const {addToCart} = useContext(CartContext)
 
-    const getItem = (id)=>{
-        return new Promise((resolve, reject)=>{
-            const product = arregloProductos.find(item=>item.id === parseInt(id));
-            resolve(product)
-        })
+    useEffect(() => {
+        getProduct({id})
+        getProducts()
+        // eslint-disable-next-line
+    }, [])
+
+    const onAdd = (count) => {
+        addToCart(product,count)
     }
 
-    useEffect(()=>{
-        const getProducto = async()=>{
-            const producto = await getItem(productId);
-            setItem(producto);
-        }
-        getProducto();
-    },[productId])
+    const ids = products.map( i => i.id)
 
-    return(
-        <div className="item-detail-container">
-            <ItemDetail item={item}/>
+    if (isLoading) {
+        return <Loading /> 
+    }
+
+    return (
+        <div className='item-detail-container'>
+        {
+            !ids.includes(id) ? <Error /> : product && <ItemDetail product={product} onAdd={onAdd} />
+        }
         </div>
     )
 }

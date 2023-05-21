@@ -1,42 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import './styles/ItemListContainer.css';
-import { arregloProductos } from "./Data/dataBase";
-// import { ItemCount } from "../ItemCount/ItemCount"
-import { ItemList } from "./ItemList";
+import { useEffect } from "react";
+import '../components/styles/ItemListContainer.css';
+import { ItemList } from "../components/ItemList";
 import { useParams } from "react-router-dom";
-import  Hero  from "./Hero"
+import useFirebase from "../hook/useFirebase";
+import Loading from "./Loading"
 
+export const ItemListContainer = () => {
+    const { category } = useParams();
 
-export const ItemListContainer = ()=>{
-    const {tipoProducto} = useParams();
+    const { products, getProducts, isLoading } = useFirebase();
 
-    const [productos, setProductos] = useState([]);
+    useEffect(() => {
+        getProducts()
+        // eslint-disable-next-line
+    }, []);
 
-    const promesa = new Promise((resolve, reject)=>{
-        setTimeout(() => {
-            resolve(arregloProductos);
-        }, 2000);
-    })
+    const newList = category ? products.filter((p) => p.category === category) : products;
 
-    useEffect(()=>{
-        promesa.then(resultado=>{
-            if(!tipoProducto){
-                setProductos(resultado)
-            } else{
-                const nuevaLista = resultado.filter(item=>item.categoria === tipoProducto);
-                setProductos(nuevaLista)
+    return (
+        <>
+            {isLoading ? <Loading /> : products &&
+                <div className="item-list-container">
+                    <ItemList products={newList} />
+                </div>
             }
-        })
-    },[tipoProducto])
-
-    return(
-        <div className="item-list-container">
-            <p></p>
-            <Hero title="CoolCase" />
-            <ItemList items={productos}/>
-        </div>
+        </>
     )
 }
-
-export default ItemListContainer

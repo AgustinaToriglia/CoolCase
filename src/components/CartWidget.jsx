@@ -11,7 +11,6 @@ export const CartWidget = () => {
     return (
         <div>
             {
-                productCartList.length > 0 &&
                 <>
                     <Link to="/cart">
                         <FontAwesomeIcon icon={faCartShopping} size="1x" color="white" />
@@ -24,3 +23,5 @@ export const CartWidget = () => {
         </div>
     )
 }
+
+export default CartWidget

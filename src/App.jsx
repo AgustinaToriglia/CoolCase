@@ -2,24 +2,15 @@ import './App.css'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import { CartProvider } from './context/CartContext'
-import ItemListContainer from './components/ItemListContainer'
+import {ItemListContainer} from './components/ItemListContainer'
 import { ItemDetailContainer } from './components/ItemDetailContainer'
 import { CartContainer } from './components/CartContainer'
-import React from 'react'
+import React, { Fragment } from 'react';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import Error from './components/Error'
 
-/* function App() {
-  return (
-    <>
-      <NavBar background={'transparent'} />
-      <Hero title="CoolCase" />
-      <ItemListContainer greeting="Lista de Productos" />
 
-    </>
-  )
-} */
 
-/* RUTAS */
 function App() {
 
   return (
@@ -29,11 +20,17 @@ function App() {
             <div>
                 <NavBar/>
                 <Routes>
-                  <Route path='/' element={<ItemListContainer />}/>
-                  <Route path="/productos/:tipoProducto" element={<ItemListContainer />}/>
-                  <Route path="/item/:productId" element={<ItemDetailContainer/>}/>
+                <Route path="/" element={
+                <Fragment>
+                  <Hero />
+                  <ItemListContainer />
+                </Fragment>
+              } />
+                  <Route path="/products/:category" element={<ItemListContainer />}/>
+                  <Route path="/products/" element={<ItemListContainer />}/>
+                  <Route path="/item/:id" element={<ItemDetailContainer/>}/>
                   <Route path="/cart" element={<CartContainer/>}/>
-             {/*      <Route path='*' element={<ItemListContainer />}/> */}
+                  <Route path='*' element={<Error />}/> 
                   {/*  // cualquier otra ruta me reenderiza este componente */}
                 </Routes>
             </div>
@@ -43,4 +40,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

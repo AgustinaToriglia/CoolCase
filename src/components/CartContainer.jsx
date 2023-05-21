@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { CartItem } from '../components/CartItem';
 import "./styles/CartContainer.css"
+import Checkout from './Checkout'
 
 export const CartContainer = () => {
     const { productCartList, clearProductCartList } = useContext(CartContext);
@@ -20,6 +21,7 @@ export const CartContainer = () => {
                             }
                             <hr />
                             <button onClick={clearProductCartList}>Vaciar el carrito</button>
+                            < Checkout />
                         </>
                         :
                         <p>No has agregado productos</p>

@@ -1,4 +1,4 @@
-.estilosContador {
+.counter {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,7 +12,12 @@
     padding: 10px;
 }
 
-.contenedorControles {
+.counter p{
+    color: black;
+    font-weight: 500;
+}
+
+.controls {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -23,7 +28,7 @@
     height: 50px;
 }
 
-.botonControl {
+.control-btn {
     width: 30px;
     height: 30px;
     font-size: 20px;
@@ -32,11 +37,11 @@
     border: none;
     background: #b7b9ba;
 }
-.botonControl:disabled{
+.control-btn:disabled{
     background: lightslategray;
 }
 
-.botonAgregar {
+.add-btn{
     background-color:rgb(205, 130, 205);
     border: none;
     border-radius: 1rem;
@@ -50,6 +55,6 @@
     color: black;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
-.botonAgregar:disabled{
+.add-btn:disabled{
     background:lightgray;
 }
